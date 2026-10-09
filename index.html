@@ -411,6 +411,254 @@
       width: 100%;
     }
 
+    /* --- ANIMASI KEPALA KUCING PIXEL PADA GRAFIK --- */
+    .chart-cat-stage {
+      position: relative;
+      width: 100%;
+      height: 46px;
+      margin-bottom: 8px;
+      overflow: visible;
+      pointer-events: none;
+      border-bottom: 2px dashed rgba(244, 114, 182, 0.35);
+    }
+
+    .pixel-cat-walker {
+      position: absolute;
+      bottom: -3px;
+      left: 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      pointer-events: auto;
+      cursor: pointer;
+      user-select: none;
+      animation: catPatrol 18s ease-in-out infinite;
+      z-index: 10;
+      /* Pastikan teks speech bubble tidak pernah terbalik/miror */
+      transform: none !important;
+    }
+
+    .pixel-cat-walker:hover {
+      animation-play-state: paused;
+    }
+
+    .pixel-cat-direction {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: catFlip 18s ease-in-out infinite;
+      transform-origin: center center;
+    }
+
+    .pixel-cat-walker:hover .pixel-cat-direction {
+      animation-play-state: paused;
+    }
+
+    .pixel-cat-avatar {
+      width: 54px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: catBob 1.6s ease-in-out infinite;
+      transform-origin: center bottom;
+      transition: transform 0.2s ease;
+      filter: drop-shadow(0 4px 10px rgba(244, 114, 182, 0.45));
+    }
+
+    .pixel-cat-walker:hover .pixel-cat-avatar {
+      transform: scale(1.18);
+    }
+
+    .pixel-cat-avatar.jump {
+      animation: catJump 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    }
+
+    /* Pixel SVG elements */
+    .pixel-cat-svg {
+      width: 54px;
+      height: 45px;
+      image-rendering: pixelated;
+      shape-rendering: crispEdges;
+    }
+
+    /* Ear twitch animations */
+    .cat-ear-left {
+      transform-origin: 4px 4px;
+      animation: earTwitchLeft 3.8s ease-in-out infinite;
+    }
+
+    .cat-ear-right {
+      transform-origin: 20px 4px;
+      animation: earTwitchRight 4.2s ease-in-out infinite;
+    }
+
+    /* Eye blinking animation */
+    .cat-eyes {
+      transform-origin: 12px 8px;
+      animation: catEyeBlink 3.2s infinite;
+    }
+
+    /* Keyframes */
+    @keyframes catBob {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-4px) rotate(1.5deg);
+      }
+    }
+
+    @keyframes catJump {
+      0% { transform: translateY(0) scale(1); }
+      35% { transform: translateY(-22px) scale(1.25) rotate(-6deg); }
+      65% { transform: translateY(-8px) scale(1.1) rotate(4deg); }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    /* Pergerakan Horizontal (Hanya Posisi 'Left', Tidak Membalik Wadah Teks) */
+    @keyframes catPatrol {
+      0% {
+        left: 5%;
+      }
+      48% {
+        left: calc(90% - 60px);
+      }
+      50% {
+        left: calc(90% - 60px);
+      }
+      98% {
+        left: 5%;
+      }
+      100% {
+        left: 5%;
+      }
+    }
+
+    /* Pembalikan Arah Kucing (Hanya Membalik Kepala Kucing, Teks Tetap Normal) */
+    @keyframes catFlip {
+      0%, 48% {
+        transform: scaleX(1);
+      }
+      50%, 98% {
+        transform: scaleX(-1);
+      }
+      100% {
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes earTwitchLeft {
+      0%, 82%, 100% { transform: rotate(0deg); }
+      86% { transform: rotate(-10deg); }
+      92% { transform: rotate(5deg); }
+    }
+
+    @keyframes earTwitchRight {
+      0%, 85%, 100% { transform: rotate(0deg); }
+      89% { transform: rotate(10deg); }
+      94% { transform: rotate(-5deg); }
+    }
+
+    @keyframes catEyeBlink {
+      0%, 90%, 100% { transform: scaleY(1); }
+      94% { transform: scaleY(0.08); }
+    }
+
+    /* Speech Bubble (Bebas dari Mirroring) */
+    .cat-speech-bubble {
+      background: #ffffff;
+      border: 1.5px solid #f472b6;
+      border-radius: 12px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #831843;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(244, 114, 182, 0.25);
+      position: relative;
+      margin-bottom: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      animation: bubbleFloat 2.5s ease-in-out infinite;
+      pointer-events: auto;
+      direction: ltr;
+      unicode-bidi: normal;
+    }
+
+    .cat-speech-bubble span {
+      display: inline-block;
+      direction: ltr;
+      unicode-bidi: normal;
+    }
+
+    .cat-speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid #f472b6;
+    }
+
+    @keyframes bubbleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    /* Cat Mascot Header Badge */
+    .chart-cat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: #fff0f5;
+      border: 1px solid #fce7f3;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #db2777;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(244, 114, 182, 0.15);
+      transition: all 0.2s ease;
+    }
+
+    .chart-cat-badge:hover {
+      background: #fdf2f8;
+      border-color: #f472b6;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(244, 114, 182, 0.25);
+    }
+
+    /* Floating Heart Particles */
+    .cat-heart-particle {
+      position: absolute;
+      font-size: 1.1rem;
+      pointer-events: none;
+      animation: heartFloatUp 0.9s ease-out forwards;
+      z-index: 99;
+    }
+
+    @keyframes heartFloatUp {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.6);
+      }
+      50% {
+        opacity: 0.9;
+        transform: translate(var(--drift-x, 8px), -24px) scale(1.2);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--drift-x, 14px), -44px) scale(0.8);
+      }
+    }
+
     /* Budget Progress Bars */
     .budget-list {
       display: flex;
@@ -1226,7 +1474,7 @@
     <!-- Analytics Dashboard: Cashflow Bar Chart & Category Doughnut -->
     <div class="dashboard-layout">
       <!-- Cashflow Chart -->
-      <div class="panel">
+      <div class="panel" style="overflow: visible;">
         <div class="panel-header">
           <div class="panel-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1234,7 +1482,79 @@
             </svg>
             Tren Arus Kas (Pemasukan vs Pengeluaran)
           </div>
+          <div class="chart-cat-badge" onclick="triggerCatMeow(event)" title="Neko Akuntan - Klik untuk interaksi!">
+            <span>🐾</span> Neko Akuntan
+          </div>
         </div>
+
+        <!-- Stage Animasi Kepala Kucing Bergerak Pixel pada Grafik -->
+        <div class="chart-cat-stage" id="chartCatStage">
+          <div class="pixel-cat-walker" id="pixelCatWalker" onclick="triggerCatMeow(event)" title="Klik Neko si Kucing Akuntan!">
+            <div class="cat-speech-bubble" id="catBubble">
+              <span id="catBubbleText">Meow! Saldomu aman 💕</span>
+            </div>
+            <div class="pixel-cat-direction" id="pixelCatDirection">
+              <div class="pixel-cat-avatar" id="pixelCatAvatar">
+                <svg class="pixel-cat-svg" viewBox="0 0 24 20" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Telinga Kiri -->
+                  <g class="cat-ear-left">
+                    <rect x="3" y="1" width="3" height="2" fill="#4a1d35" />
+                    <rect x="2" y="3" width="2" height="2" fill="#4a1d35" />
+                    <rect x="4" y="2" width="2" height="2" fill="#f472b6" />
+                  </g>
+                  <!-- Telinga Kanan -->
+                  <g class="cat-ear-right">
+                    <rect x="18" y="1" width="3" height="2" fill="#4a1d35" />
+                    <rect x="20" y="3" width="2" height="2" fill="#4a1d35" />
+                    <rect x="18" y="2" width="2" height="2" fill="#f472b6" />
+                  </g>
+                  <!-- Bentuk Kepala & Pipi Pixel -->
+                  <rect x="6" y="3" width="12" height="1" fill="#4a1d35" />
+                  <rect x="2" y="5" width="20" height="9" fill="#ffffff" />
+                  <rect x="3" y="4" width="18" height="10" fill="#ffffff" />
+                  <rect x="1" y="5" width="1" height="8" fill="#4a1d35" />
+                  <rect x="22" y="5" width="1" height="8" fill="#4a1d35" />
+                  <rect x="3" y="14" width="18" height="1" fill="#4a1d35" />
+                  <!-- Corak Belang Calico Peach Pastel -->
+                  <rect x="16" y="4" width="5" height="3" fill="#fed7aa" />
+                  <rect x="17" y="7" width="3" height="2" fill="#fed7aa" />
+                  <!-- Kumis Pixel Kiri & Kanan -->
+                  <rect x="0" y="8" width="2" height="1" fill="#be8fa7" />
+                  <rect x="0" y="10" width="2" height="1" fill="#be8fa7" />
+                  <rect x="22" y="8" width="2" height="1" fill="#be8fa7" />
+                  <rect x="22" y="10" width="2" height="1" fill="#be8fa7" />
+                  <!-- Pipi Merona Pink Pastel -->
+                  <rect x="3" y="9" width="3" height="2" fill="#fbcfe8" />
+                  <rect x="18" y="9" width="3" height="2" fill="#fbcfe8" />
+                  <!-- Mata Pixel Berkedip -->
+                  <g class="cat-eyes">
+                    <rect x="6" y="7" width="3" height="3" fill="#4a1d35" />
+                    <rect x="6" y="7" width="1" height="1" fill="#ffffff" />
+                    <rect x="15" y="7" width="3" height="3" fill="#4a1d35" />
+                    <rect x="15" y="7" width="1" height="1" fill="#ffffff" />
+                  </g>
+                  <!-- Hidung & Mulut :3 -->
+                  <rect x="11" y="9" width="2" height="1" fill="#fb7185" />
+                  <rect x="10" y="10" width="1" height="1" fill="#4a1d35" />
+                  <rect x="13" y="10" width="1" height="1" fill="#4a1d35" />
+                  <rect x="11" y="11" width="2" height="1" fill="#4a1d35" />
+                  <!-- Kaki Depan Pixel Memegang Garis Grafik -->
+                  <rect x="4" y="13" width="4" height="3" fill="#ffffff" />
+                  <rect x="4" y="13" width="1" height="3" fill="#4a1d35" />
+                  <rect x="7" y="13" width="1" height="3" fill="#4a1d35" />
+                  <rect x="4" y="16" width="4" height="1" fill="#4a1d35" />
+                  <rect x="5" y="14" width="2" height="1" fill="#fbcfe8" />
+                  <rect x="16" y="13" width="4" height="3" fill="#ffffff" />
+                  <rect x="16" y="13" width="1" height="3" fill="#4a1d35" />
+                  <rect x="19" y="13" width="1" height="3" fill="#4a1d35" />
+                  <rect x="16" y="16" width="4" height="1" fill="#4a1d35" />
+                  <rect x="17" y="14" width="2" height="1" fill="#fbcfe8" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="chart-container">
           <canvas id="cashflowChart"></canvas>
         </div>
@@ -1727,6 +2047,7 @@
       populateScanCategoryDropdown();
       setupDateInputDefault();
       setupKeyboardShortcuts();
+      initPixelCatMascot();
       registerServiceWorker();
       renderApp();
     });
@@ -1798,6 +2119,70 @@
       } else {
         // Moon icon (click to switch to dark velvet rose)
         icon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+      }
+    }
+
+    // --- Pixel Cat Mascot Controller for Charts ---
+    const CAT_MESSAGES = [
+      "Meow! Saldomu aman 💕",
+      "Nyaa~! Jangan jajan berlebihan ya 🍩",
+      "Pemasukan tercatat rapi, bos! 📈✨",
+      "Struk belanjaan siap di-scan! 🧾🐾",
+      "Purrr... Tabungan makin nambah! 💰🌸",
+      "Meow! Aku jaga grafikmu tetap aman! 🛡️",
+      "Hemat pangkal kaya, meow! 🐾",
+      "Semangat kelola uang hari ini! 🌸✨"
+    ];
+    let catMsgIndex = 0;
+
+    function initPixelCatMascot() {
+      // Rotate messages every 7 seconds if not hovered
+      setInterval(() => {
+        const walker = document.getElementById('pixelCatWalker');
+        const bubble = document.getElementById('catBubbleText');
+        if (bubble && (!walker || !walker.matches(':hover'))) {
+          catMsgIndex = (catMsgIndex + 1) % CAT_MESSAGES.length;
+          bubble.textContent = CAT_MESSAGES[catMsgIndex];
+        }
+      }, 7000);
+    }
+
+    function triggerCatMeow(e) {
+      if (e) e.stopPropagation();
+      const avatar = document.getElementById('pixelCatAvatar');
+      const walker = document.getElementById('pixelCatWalker');
+      const bubble = document.getElementById('catBubbleText');
+
+      if (avatar) {
+        avatar.classList.remove('jump');
+        void avatar.offsetWidth; // Force CSS animation reflow
+        avatar.classList.add('jump');
+        setTimeout(() => avatar.classList.remove('jump'), 600);
+      }
+
+      // Cycle message
+      catMsgIndex = (catMsgIndex + 1) % CAT_MESSAGES.length;
+      if (bubble) {
+        bubble.textContent = CAT_MESSAGES[catMsgIndex];
+      }
+
+      // Spawn floating hearts & paws
+      const stage = document.getElementById('chartCatStage');
+      if (stage && walker) {
+        const icons = ['💖', '🐾', '✨', '🌸', '💕', '⭐'];
+        for (let i = 0; i < 4; i++) {
+          setTimeout(() => {
+            const p = document.createElement('div');
+            p.className = 'cat-heart-particle';
+            p.textContent = icons[Math.floor(Math.random() * icons.length)];
+            const drift = (Math.random() * 50 - 25) + 'px';
+            p.style.setProperty('--drift-x', drift);
+            p.style.left = (walker.offsetLeft + 18 + (Math.random() * 20 - 10)) + 'px';
+            p.style.bottom = '28px';
+            stage.appendChild(p);
+            setTimeout(() => p.remove(), 950);
+          }, i * 80);
+        }
       }
     }
 
