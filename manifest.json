@@ -1,13 +1,13 @@
 {
   "name": "PENCATATAN KEUANGAN",
   "short_name": "Keuangan",
-  "description": "Dashboard Catatan Pengeluaran & Pemasukan Harian dengan Fitur Scan Struk Otomatis (OCR)",
+  "description": "Dashboard Catatan Pengeluaran & Pemasukan Harian Tema Pink Pastel & Putih dengan Scan Struk OCR",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#090d16",
-  "theme_color": "#090d16",
+  "background_color": "#fff0f5",
+  "theme_color": "#fff0f5",
   "icons": [
     {
       "src": "icon-192.png",
