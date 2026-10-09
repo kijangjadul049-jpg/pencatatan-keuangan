@@ -732,6 +732,230 @@
       background: var(--bg-input);
     }
 
+    /* --- Celengan Impian (Savings Goals / Wishlist) --- */
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .goal-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: 0 4px 15px rgba(244, 114, 182, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .goal-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(244, 114, 182, 0.16);
+    }
+
+    .goal-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .goal-icon-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .goal-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(244, 114, 182, 0.15), rgba(251, 113, 133, 0.15));
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .goal-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .goal-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .goal-deadline-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .goal-deadline-badge.achieved {
+      color: #059669;
+      background: #ecfdf5;
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+
+    .goal-progress-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .goal-amounts-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+
+    .goal-current-val {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .goal-target-val {
+      color: var(--text-muted);
+    }
+
+    .goal-bar-bg {
+      width: 100%;
+      height: 10px;
+      background: rgba(244, 114, 182, 0.15);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(244, 114, 182, 0.2);
+    }
+
+    .goal-bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #f472b6, #ec4899);
+      transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .goal-status-text {
+      font-size: 0.775rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .goal-card-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 2px;
+    }
+
+    .btn-deposit-goal {
+      flex: 1;
+      padding: 7px 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #f472b6, #ec4899);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-deposit-goal:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-goal-icon {
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: var(--bg-body);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-goal-icon:hover {
+      background: var(--border-color);
+      color: var(--text-main);
+    }
+
+    /* Cat Mood Specific Styles & Animations */
+    .chart-cat-badge.mood-happy {
+      background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+      border-color: #f472b6;
+      color: #be185d;
+    }
+
+    .chart-cat-badge.mood-warning {
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      border-color: #f59e0b;
+      color: #b45309;
+    }
+
+    .chart-cat-badge.mood-panic {
+      background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+      border-color: #f43f5e;
+      color: #e11d48;
+      animation: catBadgePulse 1.2s infinite alternate;
+    }
+
+    @keyframes catBadgePulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.4); }
+      100% { transform: scale(1.04); box-shadow: 0 0 0 6px rgba(244, 63, 94, 0); }
+    }
+
+    .pixel-cat-avatar.mood-panic {
+      animation: catBob 1.6s ease-in-out infinite, catPanicTremble 0.2s infinite alternate;
+    }
+
+    @keyframes catPanicTremble {
+      0% { transform: translateX(-1px) rotate(-1deg); }
+      100% { transform: translateX(1px) rotate(1deg); }
+    }
+
+    .cat-tear-anim {
+      animation: tearDrip 1.2s infinite;
+      transform-origin: center top;
+    }
+
+    @keyframes tearDrip {
+      0% { opacity: 0; transform: translateY(-2px); }
+      40% { opacity: 1; }
+      90% { opacity: 1; transform: translateY(4px); }
+      100% { opacity: 0; transform: translateY(6px); }
+    }
+
+    .cat-sparkle-anim {
+      animation: sparkleTwinkle 1.4s ease-in-out infinite alternate;
+    }
+
+    @keyframes sparkleTwinkle {
+      0% { opacity: 0.3; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1.15); }
+    }
+
     /* Transactions Section */
     .transactions-panel {
       background: var(--bg-card);
@@ -1482,7 +1706,7 @@
             </svg>
             Tren Arus Kas (Pemasukan vs Pengeluaran)
           </div>
-          <div class="chart-cat-badge" onclick="triggerCatMeow(event)" title="Neko Akuntan - Klik untuk interaksi!">
+          <div class="chart-cat-badge" id="chartCatBadge" onclick="openCatMoodInfo()" title="Klik untuk cek kesehatan dompet & coba ekspresi Neko!" style="cursor: pointer;">
             <span>🐾</span> Neko Akuntan
           </div>
         </div>
@@ -1526,18 +1750,76 @@
                   <!-- Pipi Merona Pink Pastel -->
                   <rect x="3" y="9" width="3" height="2" fill="#fbcfe8" />
                   <rect x="18" y="9" width="3" height="2" fill="#fbcfe8" />
-                  <!-- Mata Pixel Berkedip -->
-                  <g class="cat-eyes">
+
+                  <!-- Fitur Ekspresi Mata Sesuai Kesehatan Finansial -->
+                  <!-- 1. Normal (Mata Berkedip Biasa) -->
+                  <g class="cat-eyes" id="catEyesNormal">
                     <rect x="6" y="7" width="3" height="3" fill="#4a1d35" />
                     <rect x="6" y="7" width="1" height="1" fill="#ffffff" />
                     <rect x="15" y="7" width="3" height="3" fill="#4a1d35" />
                     <rect x="15" y="7" width="1" height="1" fill="#ffffff" />
                   </g>
-                  <!-- Hidung & Mulut :3 -->
+
+                  <!-- 2. Happy / Surplus (Mata Senyum ^ ^ & Bintang Berkilau ✨) -->
+                  <g id="catEyesHappy" style="display: none;">
+                    <rect x="6" y="8" width="1" height="1" fill="#4a1d35" />
+                    <rect x="7" y="7" width="1" height="1" fill="#4a1d35" />
+                    <rect x="8" y="8" width="1" height="1" fill="#4a1d35" />
+                    <rect x="15" y="8" width="1" height="1" fill="#4a1d35" />
+                    <rect x="16" y="7" width="1" height="1" fill="#4a1d35" />
+                    <rect x="17" y="8" width="1" height="1" fill="#4a1d35" />
+                    <!-- Bintang Berkilau Pixel ✨ -->
+                    <g class="cat-sparkle-anim">
+                      <rect x="1" y="2" width="1" height="3" fill="#f59e0b" />
+                      <rect x="0" y="3" width="3" height="1" fill="#f59e0b" />
+                      <rect x="22" y="2" width="1" height="3" fill="#f59e0b" />
+                      <rect x="21" y="3" width="3" height="1" fill="#f59e0b" />
+                    </g>
+                  </g>
+
+                  <!-- 3. Warning / Waspada (Mata Melebar Cemas + Keringat Pixel) -->
+                  <g id="catEyesWarning" style="display: none;">
+                    <rect x="5" y="7" width="4" height="3" fill="#4a1d35" />
+                    <rect x="6" y="7" width="2" height="2" fill="#ffffff" />
+                    <rect x="6" y="7" width="1" height="1" fill="#4a1d35" />
+                    <rect x="15" y="7" width="4" height="3" fill="#4a1d35" />
+                    <rect x="16" y="7" width="2" height="2" fill="#ffffff" />
+                    <rect x="16" y="7" width="1" height="1" fill="#4a1d35" />
+                    <!-- Keringat Dingin Pixel -->
+                    <rect x="20" y="4" width="2" height="2" fill="#60a5fa" />
+                    <rect x="21" y="6" width="1" height="2" fill="#38bdf8" />
+                  </g>
+
+                  <!-- 4. Panic / Defisit (Mata Menangis > < + Air Mata Menetes 💦) -->
+                  <g id="catEyesPanic" style="display: none;">
+                    <rect x="5" y="7" width="1" height="1" fill="#4a1d35" />
+                    <rect x="6" y="8" width="2" height="1" fill="#4a1d35" />
+                    <rect x="5" y="9" width="1" height="1" fill="#4a1d35" />
+                    <rect x="18" y="7" width="1" height="1" fill="#4a1d35" />
+                    <rect x="16" y="8" width="2" height="1" fill="#4a1d35" />
+                    <rect x="18" y="9" width="1" height="1" fill="#4a1d35" />
+                    <!-- Air Mata Pixel Biru 💦 -->
+                    <g class="cat-tear-anim">
+                      <rect x="6" y="10" width="2" height="3" fill="#38bdf8" />
+                      <rect x="7" y="13" width="1" height="2" fill="#0284c7" />
+                      <rect x="16" y="10" width="2" height="3" fill="#38bdf8" />
+                      <rect x="16" y="13" width="1" height="2" fill="#0284c7" />
+                    </g>
+                  </g>
+
+                  <!-- Hidung & Mulut Sesuai Mood -->
                   <rect x="11" y="9" width="2" height="1" fill="#fb7185" />
-                  <rect x="10" y="10" width="1" height="1" fill="#4a1d35" />
-                  <rect x="13" y="10" width="1" height="1" fill="#4a1d35" />
-                  <rect x="11" y="11" width="2" height="1" fill="#4a1d35" />
+                  <!-- Mulut Normal :3 -->
+                  <g id="catMouthNormal">
+                    <rect x="10" y="10" width="1" height="1" fill="#4a1d35" />
+                    <rect x="13" y="10" width="1" height="1" fill="#4a1d35" />
+                    <rect x="11" y="11" width="2" height="1" fill="#4a1d35" />
+                  </g>
+                  <!-- Mulut Panik Menangis :o -->
+                  <g id="catMouthPanic" style="display: none;">
+                    <rect x="10" y="11" width="4" height="1" fill="#4a1d35" />
+                    <rect x="11" y="10" width="2" height="2" fill="#e11d48" />
+                  </g>
                   <!-- Kaki Depan Pixel Memegang Garis Grafik -->
                   <rect x="4" y="13" width="4" height="3" fill="#ffffff" />
                   <rect x="4" y="13" width="1" height="3" fill="#4a1d35" />
@@ -1594,6 +1876,25 @@
       </div>
       <div class="budget-list" id="budgetProgressContainer">
         <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Savings Goals / Celengan Impian Panel -->
+    <div class="panel" style="margin-bottom: 28px;">
+      <div class="panel-header">
+        <div class="panel-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+          </svg>
+          Celengan Impian & Wishlist (Savings Goals)
+        </div>
+        <button class="btn btn-primary" style="padding: 6px 14px; font-size: 0.8rem;" onclick="openGoalModal()">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          + Tambah Impian Baru
+        </button>
+      </div>
+      <div class="goals-grid" id="goalsGridContainer">
+        <!-- Populated dynamically by JS -->
       </div>
     </div>
 
@@ -1769,6 +2070,127 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" onclick="closeBudgetModal()">Tutup</button>
           <button type="submit" class="btn btn-primary">Simpan Anggaran</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Celengan Impian (Tambah / Edit) -->
+  <div class="modal-overlay" id="goalModalOverlay" onclick="handleBackdropClick(event, 'goalModalOverlay')">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="goalModalTitle">🎯 Tambah Celengan Impian</h3>
+        <button class="modal-close" onclick="closeGoalModal()">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form id="goalForm" onsubmit="saveGoal(event)">
+        <div class="modal-body">
+          <input type="hidden" id="goalIdInput">
+
+          <!-- Judul Impian -->
+          <div class="form-group">
+            <label for="goalTitleInput">Nama Target / Impian</label>
+            <input type="text" id="goalTitleInput" class="form-control" placeholder="Contoh: Beli Laptop M3, Liburan ke Bali, Dana Darurat" required>
+          </div>
+
+          <!-- Kategori & Emoji -->
+          <div class="form-group">
+            <label for="goalIconSelect">Kategori Impian</label>
+            <select id="goalIconSelect" class="form-control">
+              <option value="💻|Gadget & Elektronik">💻 Gadget & Elektronik</option>
+              <option value="✈️|Liburan & Traveling">✈️ Liburan & Traveling</option>
+              <option value="🛡️|Dana Darurat">🛡️ Dana Darurat</option>
+              <option value="🏠|Tempat Tinggal & Kost">🏠 Tempat Tinggal & Kost</option>
+              <option value="🚗|Kendaraan">🚗 Kendaraan</option>
+              <option value="🎓|Pendidikan & Kursus">🎓 Pendidikan & Kursus</option>
+              <option value="💍|Pernikahan & Keluarga">💍 Pernikahan & Keluarga</option>
+              <option value="🛍️|Wishlist Belanja">🛍️ Wishlist Belanja</option>
+              <option value="⭐|Target Bebas">⭐ Target Bebas</option>
+            </select>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <!-- Target Nominal -->
+            <div class="form-group">
+              <label for="goalTargetInput">Target Nominal (Rp)</label>
+              <input type="number" id="goalTargetInput" class="form-control" placeholder="Contoh: 10000000" min="1000" required oninput="updateGoalTargetPreview(this.value)">
+              <div id="goalTargetPreview" style="font-size: 0.8rem; color: var(--primary); font-weight: 700; margin-top: 4px;">Rp 0</div>
+            </div>
+
+            <!-- Tabungan Saat Ini -->
+            <div class="form-group">
+              <label for="goalCurrentInput">Sudah Terkumpul (Rp)</label>
+              <input type="number" id="goalCurrentInput" class="form-control" placeholder="Contoh: 2000000" min="0" value="0">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <!-- Tanggal Batas Waktu -->
+            <div class="form-group">
+              <label for="goalDeadlineInput">Target Tanggal Selesai</label>
+              <input type="date" id="goalDeadlineInput" class="form-control" required>
+            </div>
+
+            <!-- Catatan / Motivasi -->
+            <div class="form-group">
+              <label for="goalNotesInput">Catatan Motivasi</label>
+              <input type="text" id="goalNotesInput" class="form-control" placeholder="Contoh: Biar kerja makin sat-set!">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeGoalModal()">Batal</button>
+          <button type="submit" class="btn btn-primary" id="btnSaveGoal">Simpan Impian 🌸</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Sisihkan Uang Cepat ke Celengan -->
+  <div class="modal-overlay" id="depositModalOverlay" onclick="handleBackdropClick(event, 'depositModalOverlay')">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>💰 Sisihkan Uang ke Celengan</h3>
+        <button class="modal-close" onclick="closeDepositModal()">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form id="depositForm" onsubmit="submitDepositGoal(event)">
+        <div class="modal-body">
+          <input type="hidden" id="depositGoalId">
+          <div style="padding: 12px 14px; background: rgba(244, 114, 182, 0.1); border-radius: 12px; margin-bottom: 16px; border: 1px solid rgba(244, 114, 182, 0.25);">
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Target Impian:</div>
+            <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-main);" id="depositGoalTitle">Beli Laptop M3</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;" id="depositGoalProgressInfo">Terkumpul: Rp 0 / Rp 0</div>
+          </div>
+
+          <div class="form-group">
+            <label for="depositAmountInput">Nominal yang Disisihkan (Rp)</label>
+            <input type="number" id="depositAmountInput" class="form-control" placeholder="Contoh: 250000" min="1000" required oninput="updateDepositPreview(this.value)">
+            <div id="depositAmountPreview" style="font-size: 0.8rem; color: var(--primary); font-weight: 700; margin-top: 4px;">Rp 0</div>
+            <div class="quick-nominal-chips" style="margin-top: 6px;">
+              <button type="button" class="chip-nominal" onclick="quickSetDeposit(50000)">+50rb</button>
+              <button type="button" class="chip-nominal" onclick="quickSetDeposit(100000)">+100rb</button>
+              <button type="button" class="chip-nominal" onclick="quickSetDeposit(250000)">+250rb</button>
+              <button type="button" class="chip-nominal" onclick="quickSetDeposit(500000)">+500rb</button>
+              <button type="button" class="chip-nominal" onclick="quickSetDeposit(1000000)">+1jt</button>
+            </div>
+          </div>
+
+          <div style="margin-top: 14px; padding: 10px 12px; background: var(--bg-body); border-radius: 10px; border: 1px solid var(--border-color);">
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 0.825rem; font-weight: 600; cursor: pointer; color: var(--text-main);">
+              <input type="checkbox" id="depositSyncTransaction" checked style="width: 16px; height: 16px; accent-color: var(--primary);">
+              Catat otomatis sebagai pengeluaran "Investasi & Tabungan" di mutasi transaksi
+            </label>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-left: 24px; margin-top: 2px;">
+              Saldo utama akan otomatis berkurang senilai uang yang Anda sisihkan ke celengan.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeDepositModal()">Batal</button>
+          <button type="submit" class="btn btn-primary">Masukkan ke Celengan 🌸</button>
         </div>
       </form>
     </div>
@@ -2028,15 +2450,42 @@
     // --- State Variables ---
     let transactions = [];
     let budgets = {};
+    let savingsGoals = [];
     let currentFilterPeriod = 'all'; // all, month, 7days, today, year
     let currentFormType = 'expense';
     let cashflowChartInstance = null;
     let categoryChartInstance = null;
+    let currentCatMood = 'normal'; // happy, normal, warning, panic
+    let catMoodOverride = null; // for testing or manual preview
 
     // --- Storage Keys ---
     const STORAGE_KEY_TX = 'pencatatan_keuangan_tx_v1';
     const STORAGE_KEY_BUDGETS = 'pencatatan_keuangan_budgets_v1';
     const STORAGE_KEY_THEME = 'pencatatan_keuangan_theme_v1';
+    const STORAGE_KEY_GOALS = 'pencatatan_keuangan_goals_v1';
+
+    const DEFAULT_GOALS = [
+      {
+        id: 'goal-seed-1',
+        title: 'Dana Darurat (6 Bulan)',
+        category: 'Dana Darurat',
+        icon: '🛡️',
+        targetAmount: 12000000,
+        currentAmount: 7500000,
+        deadline: '2026-12-31',
+        notes: 'Proteksi keamanan & kestabilan finansial'
+      },
+      {
+        id: 'goal-seed-2',
+        title: 'Upgrade Laptop & Layar Kerja',
+        category: 'Gadget & Elektronik',
+        icon: '💻',
+        targetAmount: 15000000,
+        currentAmount: 6250000,
+        deadline: '2027-03-31',
+        notes: 'Investasi alat kerja untuk produktivitas'
+      }
+    ];
 
     // --- Initialization ---
     document.addEventListener('DOMContentLoaded', () => {
@@ -2123,16 +2572,38 @@
     }
 
     // --- Pixel Cat Mascot Controller for Charts ---
-    const CAT_MESSAGES = [
-      "Meow! Saldomu aman 💕",
-      "Nyaa~! Jangan jajan berlebihan ya 🍩",
-      "Pemasukan tercatat rapi, bos! 📈✨",
-      "Struk belanjaan siap di-scan! 🧾🐾",
-      "Purrr... Tabungan makin nambah! 💰🌸",
-      "Meow! Aku jaga grafikmu tetap aman! 🛡️",
-      "Hemat pangkal kaya, meow! 🐾",
-      "Semangat kelola uang hari ini! 🌸✨"
-    ];
+    const CAT_MOOD_MESSAGES = {
+      happy: [
+        "Meow! Dompetmu sehat & gemoy! ✨🌸",
+        "Surplus nih! Kamu jago banget kelola uang! 💖",
+        "Purrr... Tabungan aman terkendali! 💰✨",
+        "Neko bangga sama kamu, hemat banget! 🐾🎉",
+        "Finansial prima, siap capai celengan impian! 🎯✨",
+        "Arus kas positif! Pertahankan ya meow! 📈🌸"
+      ],
+      warning: [
+        "Meow~ Pengeluaran sudah 70%+ limit nih! 🍩⚠️",
+        "Hati-hati ya, yuk rem belanja dulu meow! 🐾",
+        "Tahan godaan checkout dulu ya bos! 🛍️👀",
+        "Waspada meow! Sisa limit anggaran menipis! ⚡",
+        "Cek pos pengeluaranmu lagi ya! 🧐📋"
+      ],
+      panic: [
+        "WAAAH BONCOS! Rem belanjanya, meow! 😿💦",
+        "Warning: Pengeluaran jebol / saldo defisit! 🚨😿",
+        "Dompet lagi menangis... Stop jajan dulu ya! 💸💔",
+        "Meow! Saldomu defisit, yuk hemat ketat! 🐾⚠️",
+        "Aduh panik meow! Jangan checkout lagi! 🛒❌"
+      ],
+      normal: [
+        "Meow! Saldomu aman 💕",
+        "Nyaa~! Jangan jajan berlebihan ya 🍩",
+        "Pemasukan tercatat rapi, bos! 📈✨",
+        "Struk belanjaan siap di-scan! 🧾🐾",
+        "Purrr... Tabungan makin nambah! 💰🌸",
+        "Hemat pangkal kaya, meow! 🐾"
+      ]
+    };
     let catMsgIndex = 0;
 
     function initPixelCatMascot() {
@@ -2141,10 +2612,136 @@
         const walker = document.getElementById('pixelCatWalker');
         const bubble = document.getElementById('catBubbleText');
         if (bubble && (!walker || !walker.matches(':hover'))) {
-          catMsgIndex = (catMsgIndex + 1) % CAT_MESSAGES.length;
-          bubble.textContent = CAT_MESSAGES[catMsgIndex];
+          const msgs = CAT_MOOD_MESSAGES[currentCatMood] || CAT_MOOD_MESSAGES.normal;
+          catMsgIndex = (catMsgIndex + 1) % msgs.length;
+          bubble.textContent = msgs[catMsgIndex];
         }
       }, 7000);
+    }
+
+    function updateCatFinancialMood() {
+      if (catMoodOverride) {
+        setCatMood(catMoodOverride);
+        return;
+      }
+
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      const currentMonth = now.getMonth();
+
+      let monthIncome = 0;
+      let monthExpense = 0;
+      let totalIncome = 0;
+      let totalExpense = 0;
+
+      transactions.forEach(t => {
+        const amt = Number(t.amount) || 0;
+        const d = new Date(t.date);
+        const isCurrentMonth = d.getFullYear() === currentYear && d.getMonth() === currentMonth;
+
+        if (t.type === 'income') {
+          totalIncome += amt;
+          if (isCurrentMonth) monthIncome += amt;
+        } else {
+          totalExpense += amt;
+          if (isCurrentMonth) monthExpense += amt;
+        }
+      });
+
+      const totalBalance = totalIncome - totalExpense;
+      const monthBalance = monthIncome - monthExpense;
+
+      // Budget evaluation
+      const totalBudget = Object.values(budgets).reduce((a, b) => a + (Number(b) || 0), 0);
+      const budgetRatio = totalBudget > 0 ? (monthExpense / totalBudget) : (monthIncome > 0 ? (monthExpense / monthIncome) : 0);
+
+      let targetMood = 'normal';
+
+      if (totalBalance < 0 || (totalBudget > 0 && monthExpense > totalBudget) || (monthIncome > 0 && monthBalance < 0 && monthExpense > 1000000)) {
+        // Condition: Minus or Overbudget (>100%) -> Panik / Menangis
+        targetMood = 'panic';
+      } else if ((totalBudget > 0 && budgetRatio >= 0.70) || (monthIncome > 0 && budgetRatio >= 0.80)) {
+        // Condition: Warning (>70% - 99% of budget) -> Waspada
+        targetMood = 'warning';
+      } else if (totalBalance >= 0 && (monthBalance > 0 || totalBudget === 0 || budgetRatio < 0.65)) {
+        // Condition: Surplus / Hemat -> Senang & Berbintang
+        targetMood = 'happy';
+      }
+
+      setCatMood(targetMood);
+    }
+
+    function setCatMood(mood) {
+      currentCatMood = mood;
+      const avatar = document.getElementById('pixelCatAvatar');
+      const badge = document.getElementById('chartCatBadge');
+      const normalEyes = document.getElementById('catEyesNormal');
+      const happyEyes = document.getElementById('catEyesHappy');
+      const warningEyes = document.getElementById('catEyesWarning');
+      const panicEyes = document.getElementById('catEyesPanic');
+      const mouthNormal = document.getElementById('catMouthNormal');
+      const mouthPanic = document.getElementById('catMouthPanic');
+
+      if (avatar) {
+        avatar.classList.remove('mood-happy', 'mood-warning', 'mood-panic');
+        avatar.classList.add(`mood-${mood}`);
+      }
+
+      if (normalEyes) normalEyes.style.display = (mood === 'normal') ? 'block' : 'none';
+      if (happyEyes) happyEyes.style.display = (mood === 'happy') ? 'block' : 'none';
+      if (warningEyes) warningEyes.style.display = (mood === 'warning') ? 'block' : 'none';
+      if (panicEyes) panicEyes.style.display = (mood === 'panic') ? 'block' : 'none';
+
+      if (mouthNormal) mouthNormal.style.display = (mood === 'panic') ? 'none' : 'block';
+      if (mouthPanic) mouthPanic.style.display = (mood === 'panic') ? 'block' : 'none';
+
+      if (badge) {
+        badge.className = `chart-cat-badge mood-${mood}`;
+        if (mood === 'happy') {
+          badge.innerHTML = `<span>✨</span> Neko Bahagia (Dompet Sehat)`;
+          badge.title = "Kondisi Dompet: Surplus & Sehat! Klik untuk coba tes ekspresi";
+        } else if (mood === 'warning') {
+          badge.innerHTML = `<span>🙀</span> Neko Waspada (>70% Limit)`;
+          badge.title = "Kondisi Dompet: Waspada mendekati batas! Klik untuk info";
+        } else if (mood === 'panic') {
+          badge.innerHTML = `<span>😿</span> Neko Panik (Defisit/Overbudget)`;
+          badge.title = "Kondisi Dompet: Defisit / Pengeluaran berlebih! Rem belanja!";
+        } else {
+          badge.innerHTML = `<span>🐾</span> Neko Akuntan`;
+          badge.title = "Klik untuk interaksi / coba ekspresi!";
+        }
+      }
+
+      // Update text bubble immediately
+      const bubble = document.getElementById('catBubbleText');
+      if (bubble) {
+        const msgs = CAT_MOOD_MESSAGES[currentCatMood] || CAT_MOOD_MESSAGES.normal;
+        bubble.textContent = msgs[Math.floor(Math.random() * msgs.length)];
+      }
+    }
+
+    function openCatMoodInfo() {
+      const moodNames = {
+        happy: '✨ Bahagia (Surplus Finansial & Hemat)',
+        warning: '🙀 Waspada (Pengeluaran > 70% Limit)',
+        panic: '😿 Panik (Defisit Saldo / Overbudget)',
+        normal: '🐾 Normal'
+      };
+
+      // Cycle mood for interactive test preview: Happy -> Warning -> Panic -> Otomatis
+      const cycle = ['happy', 'warning', 'panic', null];
+      const curIdx = cycle.indexOf(catMoodOverride);
+      const nextIdx = (curIdx + 1) % cycle.length;
+      catMoodOverride = cycle[nextIdx];
+
+      if (catMoodOverride) {
+        setCatMood(catMoodOverride);
+        showToast(`Tes Ekspresi Neko: ${moodNames[catMoodOverride]}! (Klik lagi untuk ekspresi lain)`, 'info');
+      } else {
+        updateCatFinancialMood();
+        showToast(`Ekspresi Neko kembali otomatis sesuai keuangan: ${moodNames[currentCatMood]}!`, 'success');
+      }
+      triggerCatMeow();
     }
 
     function triggerCatMeow(e) {
@@ -2160,16 +2757,25 @@
         setTimeout(() => avatar.classList.remove('jump'), 600);
       }
 
-      // Cycle message
-      catMsgIndex = (catMsgIndex + 1) % CAT_MESSAGES.length;
+      // Cycle message for current mood
+      const msgs = CAT_MOOD_MESSAGES[currentCatMood] || CAT_MOOD_MESSAGES.normal;
+      catMsgIndex = (catMsgIndex + 1) % msgs.length;
       if (bubble) {
-        bubble.textContent = CAT_MESSAGES[catMsgIndex];
+        bubble.textContent = msgs[catMsgIndex];
       }
 
-      // Spawn floating hearts & paws
+      // Spawn floating mood particles
       const stage = document.getElementById('chartCatStage');
       if (stage && walker) {
-        const icons = ['💖', '🐾', '✨', '🌸', '💕', '⭐'];
+        let icons = ['💖', '🐾', '✨', '🌸', '💕', '⭐'];
+        if (currentCatMood === 'panic') {
+          icons = ['😿', '💦', '💸', '💔', '🚨', '⚠️'];
+        } else if (currentCatMood === 'warning') {
+          icons = ['🙀', '⚠️', '👀', '🍩', '⚡', '🐾'];
+        } else if (currentCatMood === 'happy') {
+          icons = ['✨', '💖', '⭐', '🌸', '💰', '🎉'];
+        }
+
         for (let i = 0; i < 4; i++) {
           setTimeout(() => {
             const p = document.createElement('div');
@@ -2190,6 +2796,7 @@
     function loadStorageData() {
       const storedTx = localStorage.getItem(STORAGE_KEY_TX) || localStorage.getItem('annin_transactions_v1') || localStorage.getItem('fintrack_transactions_v1');
       const storedBudgets = localStorage.getItem(STORAGE_KEY_BUDGETS) || localStorage.getItem('annin_budgets_v1') || localStorage.getItem('fintrack_budgets_v1');
+      const storedGoals = localStorage.getItem(STORAGE_KEY_GOALS);
 
       if (storedTx) {
         try {
@@ -2213,11 +2820,26 @@
       } else {
         budgets = { ...DEFAULT_BUDGETS };
       }
+
+      if (storedGoals) {
+        try {
+          savingsGoals = JSON.parse(storedGoals);
+        } catch (e) {
+          savingsGoals = JSON.parse(JSON.stringify(DEFAULT_GOALS));
+        }
+      } else {
+        savingsGoals = JSON.parse(JSON.stringify(DEFAULT_GOALS));
+        saveSavingsGoals();
+      }
     }
 
     function saveToStorage() {
       localStorage.setItem(STORAGE_KEY_TX, JSON.stringify(transactions));
       localStorage.setItem(STORAGE_KEY_BUDGETS, JSON.stringify(budgets));
+    }
+
+    function saveSavingsGoals() {
+      localStorage.setItem(STORAGE_KEY_GOALS, JSON.stringify(savingsGoals));
     }
 
     function loadDemoData(notify = true) {
@@ -2329,16 +2951,20 @@
       ];
 
       budgets = { ...DEFAULT_BUDGETS };
+      savingsGoals = JSON.parse(JSON.stringify(DEFAULT_GOALS));
       saveToStorage();
+      saveSavingsGoals();
       renderApp();
       closeExportModal();
       if (notify) showToast('Data demo berhasil dimuat!', 'success');
     }
 
     function clearAllData() {
-      if (!confirm('Apakah Anda yakin ingin mengosongkan semua data transaksi?')) return;
+      if (!confirm('Apakah Anda yakin ingin mengosongkan semua data transaksi dan celengan?')) return;
       transactions = [];
+      savingsGoals = [];
       saveToStorage();
+      saveSavingsGoals();
       renderApp();
       closeExportModal();
       showToast('Semua data berhasil dibersihkan', 'info');
@@ -2470,6 +3096,8 @@
       renderTable(filtered);
       renderCharts(filtered);
       renderBudgets();
+      renderGoals();
+      updateCatFinancialMood();
     }
 
     // Render Stats
@@ -2799,6 +3427,299 @@
       }).join('');
     }
 
+    // --- Celengan Impian (Savings Goals) Engine ---
+    function renderGoals() {
+      const container = document.getElementById('goalsGridContainer');
+      if (!container) return;
+
+      if (!savingsGoals || savingsGoals.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 36px 20px; background: var(--bg-card); border-radius: 16px; border: 1.5px dashed var(--border-color);">
+            <div style="font-size: 2.2rem; margin-bottom: 8px;">🎯🐾</div>
+            <div style="font-weight: 700; color: var(--text-main); font-size: 1rem;">Belum Ada Celengan Impian</div>
+            <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px; max-width: 420px; margin-left: auto; margin-right: auto;">
+              Mulai wujudkan barang impian, dana darurat, atau rencana liburanmu dengan membuat target tabungan pertamamu!
+            </div>
+            <button class="btn btn-primary" style="margin-top: 14px; padding: 8px 18px;" onclick="openGoalModal()">+ Buat Celengan Impian</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = savingsGoals.map(goal => {
+        const target = Number(goal.targetAmount) || 0;
+        const current = Number(goal.currentAmount) || 0;
+        const percent = target > 0 ? Math.min(100, Math.round((current / target) * 100)) : 0;
+        const isAchieved = current >= target;
+
+        // Calculate days remaining
+        let deadlineLabel = '-';
+        if (goal.deadline) {
+          const deadlineDate = new Date(goal.deadline);
+          const today = new Date();
+          today.setHours(0,0,0,0);
+          deadlineDate.setHours(0,0,0,0);
+          const diffDays = Math.ceil((deadlineDate - today) / (1000 * 60 * 60 * 24));
+
+          if (isAchieved) {
+            deadlineLabel = '🎉 Target Tercapai!';
+          } else if (diffDays < 0) {
+            deadlineLabel = `⚠️ Lewat ${Math.abs(diffDays)} Hari`;
+          } else if (diffDays === 0) {
+            deadlineLabel = '⚡ Hari Ini Batas Waktu!';
+          } else {
+            deadlineLabel = `⏱️ Sisa ${diffDays} Hari (${formatDateIndo(goal.deadline)})`;
+          }
+        }
+
+        const remaining = Math.max(0, target - current);
+        const icon = goal.icon || '🎯';
+
+        return `
+          <div class="goal-card" id="goal-card-${goal.id}">
+            <div class="goal-card-header">
+              <div class="goal-icon-title">
+                <div class="goal-icon-badge">${icon}</div>
+                <div class="goal-title-wrap">
+                  <div class="goal-title">${escapeHtml(goal.title)}</div>
+                  <div class="goal-deadline-badge ${isAchieved ? 'achieved' : ''}">
+                    ${deadlineLabel}
+                  </div>
+                </div>
+              </div>
+              <div style="font-size: 1.1rem; font-weight: 800; color: ${isAchieved ? '#059669' : 'var(--primary)'};">
+                ${percent}%
+              </div>
+            </div>
+
+            <div class="goal-progress-wrap">
+              <div class="goal-amounts-row">
+                <span class="goal-current-val">${formatRupiah(current)}</span>
+                <span class="goal-target-val">dari ${formatRupiah(target)}</span>
+              </div>
+              <div class="goal-bar-bg">
+                <div class="goal-bar-fill" style="width: ${percent}%; ${isAchieved ? 'background: linear-gradient(90deg, #10b981, #059669);' : ''}"></div>
+              </div>
+              <div class="goal-status-text">
+                <span>${isAchieved ? '✨ Tabungan Penuh!' : `Kurang ${formatRupiah(remaining)} lagi`}</span>
+                ${goal.notes ? `<span>💬 ${escapeHtml(goal.notes)}</span>` : ''}
+              </div>
+            </div>
+
+            <div class="goal-card-actions">
+              <button class="btn-deposit-goal" onclick="openDepositGoalModal('${goal.id}')">
+                <span>+</span> Sisihkan Uang 🌸
+              </button>
+              <button class="btn-goal-icon" title="Edit Impian" onclick="openGoalModal('${goal.id}')">
+                ✏️
+              </button>
+              <button class="btn-goal-icon" title="Hapus Impian" onclick="deleteGoal('${goal.id}')">
+                🗑️
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openGoalModal(goalId = null) {
+      const modal = document.getElementById('goalModalOverlay');
+      const titleEl = document.getElementById('goalModalTitle');
+      const form = document.getElementById('goalForm');
+      form.reset();
+
+      if (goalId) {
+        const goal = savingsGoals.find(g => g.id === goalId);
+        if (goal) {
+          titleEl.textContent = '✏️ Edit Celengan Impian';
+          document.getElementById('goalIdInput').value = goal.id;
+          document.getElementById('goalTitleInput').value = goal.title;
+
+          // Select matching option
+          const select = document.getElementById('goalIconSelect');
+          for (let opt of select.options) {
+            if (opt.value.startsWith(goal.icon) || opt.value.includes(goal.category)) {
+              select.value = opt.value;
+              break;
+            }
+          }
+
+          document.getElementById('goalTargetInput').value = goal.targetAmount;
+          document.getElementById('goalCurrentInput').value = goal.currentAmount;
+          document.getElementById('goalDeadlineInput').value = goal.deadline || '';
+          document.getElementById('goalNotesInput').value = goal.notes || '';
+          updateGoalTargetPreview(goal.targetAmount);
+        }
+      } else {
+        titleEl.textContent = '🎯 Tambah Celengan Impian';
+        document.getElementById('goalIdInput').value = '';
+
+        // Default deadline: 6 months ahead
+        const d = new Date();
+        d.setMonth(d.getMonth() + 6);
+        document.getElementById('goalDeadlineInput').value = d.toISOString().split('T')[0];
+        document.getElementById('goalCurrentInput').value = '0';
+        updateGoalTargetPreview(0);
+      }
+
+      modal.classList.add('active');
+    }
+
+    function closeGoalModal() {
+      document.getElementById('goalModalOverlay').classList.remove('active');
+    }
+
+    function updateGoalTargetPreview(val) {
+      const el = document.getElementById('goalTargetPreview');
+      if (el) el.textContent = formatRupiah(Number(val) || 0);
+    }
+
+    function saveGoal(e) {
+      e.preventDefault();
+      const id = document.getElementById('goalIdInput').value;
+      const title = document.getElementById('goalTitleInput').value.trim();
+      const catVal = document.getElementById('goalIconSelect').value.split('|');
+      const icon = catVal[0];
+      const category = catVal[1] || 'Lainnya';
+      const targetAmount = Number(document.getElementById('goalTargetInput').value) || 0;
+      const currentAmount = Number(document.getElementById('goalCurrentInput').value) || 0;
+      const deadline = document.getElementById('goalDeadlineInput').value;
+      const notes = document.getElementById('goalNotesInput').value.trim();
+
+      if (!title || targetAmount <= 0) {
+        showToast('Mohon masukkan nama impian dan target nominal yang valid!', 'danger');
+        return;
+      }
+
+      if (id) {
+        // Edit existing
+        const idx = savingsGoals.findIndex(g => g.id === id);
+        if (idx !== -1) {
+          savingsGoals[idx] = {
+            ...savingsGoals[idx],
+            title,
+            icon,
+            category,
+            targetAmount,
+            currentAmount,
+            deadline,
+            notes
+          };
+          showToast('Celengan impian berhasil diperbarui! 🌸', 'success');
+        }
+      } else {
+        // New goal
+        const newGoal = {
+          id: 'goal-' + Date.now(),
+          title,
+          icon,
+          category,
+          targetAmount,
+          currentAmount,
+          deadline,
+          notes
+        };
+        savingsGoals.push(newGoal);
+        showToast('Celengan impian baru berhasil ditambahkan! 🎯✨', 'success');
+      }
+
+      saveSavingsGoals();
+      renderGoals();
+      closeGoalModal();
+    }
+
+    function deleteGoal(id) {
+      const goal = savingsGoals.find(g => g.id === id);
+      if (!goal) return;
+      if (!confirm(`Hapus celengan impian "${goal.title}"?`)) return;
+
+      savingsGoals = savingsGoals.filter(g => g.id !== id);
+      saveSavingsGoals();
+      renderGoals();
+      showToast('Celengan impian berhasil dihapus', 'info');
+    }
+
+    // --- Quick Deposit Engine ---
+    function openDepositGoalModal(id) {
+      const goal = savingsGoals.find(g => g.id === id);
+      if (!goal) return;
+
+      document.getElementById('depositGoalId').value = goal.id;
+      document.getElementById('depositGoalTitle').textContent = `${goal.icon} ${goal.title}`;
+      document.getElementById('depositGoalProgressInfo').textContent =
+        `Terkumpul: ${formatRupiah(goal.currentAmount)} dari ${formatRupiah(goal.targetAmount)} (Kurang: ${formatRupiah(Math.max(0, goal.targetAmount - goal.currentAmount))})`;
+
+      document.getElementById('depositAmountInput').value = '';
+      updateDepositPreview(0);
+      document.getElementById('depositModalOverlay').classList.add('active');
+    }
+
+    function closeDepositModal() {
+      document.getElementById('depositModalOverlay').classList.remove('active');
+    }
+
+    function updateDepositPreview(val) {
+      const el = document.getElementById('depositAmountPreview');
+      if (el) el.textContent = formatRupiah(Number(val) || 0);
+    }
+
+    function quickSetDeposit(val) {
+      const input = document.getElementById('depositAmountInput');
+      if (input) {
+        const cur = Number(input.value) || 0;
+        input.value = cur + val;
+        updateDepositPreview(input.value);
+      }
+    }
+
+    function submitDepositGoal(e) {
+      e.preventDefault();
+      const id = document.getElementById('depositGoalId').value;
+      const amount = Number(document.getElementById('depositAmountInput').value) || 0;
+      const syncTx = document.getElementById('depositSyncTransaction').checked;
+
+      if (amount <= 0) {
+        showToast('Masukkan nominal uang yang disisihkan!', 'danger');
+        return;
+      }
+
+      const goal = savingsGoals.find(g => g.id === id);
+      if (!goal) return;
+
+      goal.currentAmount += amount;
+      saveSavingsGoals();
+
+      // Optional: record transaction in history as expense under Investasi & Tabungan
+      if (syncTx) {
+        const tx = {
+          id: 'tx-goal-' + Date.now(),
+          type: 'expense',
+          amount: amount,
+          title: `Tabungan: ${goal.title}`,
+          category: 'Investasi & Tabungan',
+          wallet: 'BCA',
+          date: new Date().toISOString().split('T')[0],
+          notes: `Setoran ke celengan impian "${goal.title}"`
+        };
+        transactions.unshift(tx);
+        saveToStorage();
+        renderApp();
+      } else {
+        renderGoals();
+      }
+
+      closeDepositModal();
+
+      if (goal.currentAmount >= goal.targetAmount) {
+        showToast(`🎉 SELAMAT! Target "${goal.title}" telah tercapai 100%! 🐱✨`, 'success');
+        setCatMood('happy');
+        triggerCatMeow();
+      } else {
+        showToast(`Berhasil menyisihkan ${formatRupiah(amount)} ke "${goal.title}"! 🌸💰`, 'success');
+        triggerCatMeow();
+      }
+    }
+
     // --- Transaction CRUD ---
     function openTransactionModal(editId = null) {
       const overlay = document.getElementById('txModalOverlay');
@@ -3017,7 +3938,8 @@
         version: '1.0',
         exportedAt: new Date().toISOString(),
         transactions,
-        budgets
+        budgets,
+        savingsGoals
       };
 
       const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(backupData, null, 2));
@@ -3042,10 +3964,14 @@
           if (Array.isArray(parsed.transactions)) {
             transactions = parsed.transactions;
             if (parsed.budgets) budgets = parsed.budgets;
+            if (Array.isArray(parsed.savingsGoals)) {
+              savingsGoals = parsed.savingsGoals;
+              saveSavingsGoals();
+            }
             saveToStorage();
             renderApp();
             closeExportModal();
-            showToast(`Berhasil memulihkan ${transactions.length} transaksi!`, 'success');
+            showToast(`Berhasil memulihkan ${transactions.length} transaksi & celengan impian!`, 'success');
           } else {
             showToast('Format file JSON tidak valid', 'danger');
           }
